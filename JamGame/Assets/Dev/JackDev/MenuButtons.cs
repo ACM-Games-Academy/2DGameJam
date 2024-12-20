@@ -43,15 +43,12 @@ public class MenuButtons : MonoBehaviour
 
         while (elapsedTime < lerpDuration)
         {
-            // Interpolate between the start and target positions
             cameraTransform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / lerpDuration);
 
-            // Increment elapsed time
             elapsedTime += Time.deltaTime;
-            yield return null; // Wait for the next frame
+            yield return null; 
         }
 
-        // Ensure the camera ends exactly at the target position
         cameraTransform.position = targetPosition;
     }
 }

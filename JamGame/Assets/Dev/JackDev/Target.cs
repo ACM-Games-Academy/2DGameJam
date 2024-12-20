@@ -22,6 +22,7 @@ public class Target : MonoBehaviour
 
     void Update()
     {
+
         float playerDistance = Vector2.Distance(player.transform.position, gameObject.transform.position);
 
         if (playerDistance < playerDistanceToKill && !isPlayerInRange)
