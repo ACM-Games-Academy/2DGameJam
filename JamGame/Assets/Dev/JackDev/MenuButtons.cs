@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class MenuButtons : MonoBehaviour
     {
         StartCoroutine(LerpCameraPosition(cameraPositionThree.transform.position));
     }
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
     public void ExitGame()
     {
@@ -49,6 +54,6 @@ public class MenuButtons : MonoBehaviour
             yield return null; 
         }
 
-        cameraTransform.position = targetPosition;
+        cameraTransform.position = targetPosition; 
     }
 }
