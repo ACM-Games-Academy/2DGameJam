@@ -7,7 +7,8 @@ public class PlayerCont : MonoBehaviour
     private Rigidbody2D myRb;
     private float horizontalInput;
     private float verticalInput;
-    
+    public float walkSpeed;
+    private Vector2 walkVect;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,15 @@ public class PlayerCont : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        myRb.velocity = new Vector2(horizontalInput * 4000 * Time.deltaTime, verticalInput * 4000 * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void FixedUpdate()
+    {
+        walkVect = new Vector2 (horizontalInput, verticalInput);
+        walkVect.Normalize();
+        myRb.velocity = walkVect * walkSpeed;
     }
 }
