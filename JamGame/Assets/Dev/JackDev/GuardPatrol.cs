@@ -3,32 +3,70 @@ using System.Collections;
 
 public class GuardPatrol : MonoBehaviour
 {
-    public Transform[] waypoints; // Array of waypoints for patrol path
-    public float speed = 2f; // Movement speed
-    public float waitTime = 2f; // Default wait time at waypoints
-    public Transform fieldOfView; // Reference to the field of view object
+    public enum GuardState { Patrolling, Alert, Searching }
+    public GuardState currentState = GuardState.Patrolling;
+
+    private Detection detection;
+    public Transform[] waypoints;       // Array of waypoints for patrol path
+    public float speed = 2f;            // Movement speed
+    public float searchSpeed = 0f;
+    public Transform fieldOfView;       // Reference to the field of view object
+    public Sprite sprite1;              // First animation sprite
+    public Sprite sprite2;
+    public Sprite searching;
+    public Sprite alert;
+
     private int currentWaypointIndex = 0;
     private bool isReversing = false;
     private bool isWaiting = false;
     private SpriteRenderer spriteRenderer; // Reference to the guard's SpriteRenderer
-    private Vector3 lastPosition; // To track movement direction
+    private Vector3 lastPosition;          // To track movement direction
+    private Combat combat;
+    private bool alertTriggered = false;
 
-    private void Start()
+    private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        combat = FindObjectOfType<Combat>();
+
+        // Get the Detection component from the child object
+        detection = GetComponentInChildren<Detection>();
+
         lastPosition = transform.position;
+
+        // Start sprite animation for patrolling
+        StartCoroutine(SwitchPatrolSprites());
     }
+
 
     private void Update()
     {
-        if (!isWaiting)
+        // Check for detection and set state accordingly
+        if (detection != null && detection.IsBeingDetected)
         {
-            Patrol();
+            currentState = GuardState.Searching; // Set to Searching while player is detected
         }
+        else if (combat.isDetected && !alertTriggered)
+        {
+            StartCoroutine(TriggerAlert()); // Trigger Alert if detection occurred
+        }
+        else
+        {
+            currentState = GuardState.Patrolling; // Default state
+        }
+
+        // Perform patrol actions
+        Patrol();
+
+        // Update the sprite based on the current state
+        UpdateSprite();
     }
+
 
     private void Patrol()
     {
+        if (isWaiting) return;
+
         Transform targetWaypoint = waypoints[currentWaypointIndex];
         Vector3 targetPosition = targetWaypoint.position;
 
@@ -44,7 +82,6 @@ public class GuardPatrol : MonoBehaviour
         // If close to the waypoint, start wait behavior
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
-            // Check if the waypoint has a "LookAround" tag
             if (targetWaypoint.CompareTag("LookAround"))
             {
                 StartCoroutine(LookAround());
@@ -58,76 +95,22 @@ public class GuardPatrol : MonoBehaviour
 
     private void FlipSprite()
     {
-        Vector3 direction = transform.position - lastPosition; // Calculate movement direction
+        Vector3 direction = transform.position - lastPosition;
         lastPosition = transform.position;
 
-        // Flip sprite based on horizontal movement
         if (direction.x < 0)
-        {
             spriteRenderer.flipX = true; // Moving left
-        }
         else if (direction.x > 0)
-        {
             spriteRenderer.flipX = false; // Moving right
-        }
     }
 
     private void RotateFieldOfView(Vector3 targetPosition)
     {
-        if (fieldOfView != null)
-        {
-            Vector3 direction = targetPosition - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        if (fieldOfView == null) return;
 
-            // Set rotation of FOV object
-            fieldOfView.rotation = Quaternion.Euler(0, 0, angle);
-        }
-    }
-
-    private IEnumerator LookAround()
-    {
-        isWaiting = true;
-
-        // Gradually rotate the FOV 360°
-        float totalRotation = 0f;
-        float rotationSpeed = 180f; // Degrees per second
-
-        while (totalRotation < 360f)
-        {
-            float rotationStep = rotationSpeed * Time.deltaTime;
-            fieldOfView.Rotate(0, 0, rotationStep);
-            totalRotation += rotationStep;
-            yield return null; // Wait for the next frame
-        }
-
-        // Ensure the FOV ends back at its original rotation
-        fieldOfView.localRotation = Quaternion.identity;
-
-        // Wait for a moment after the 360° rotation
-        yield return new WaitForSeconds(waitTime);
-
-        // Resume patrol
-        isWaiting = false;
-
-        // Go to the next waypoint or reverse direction
-        if (!isReversing)
-        {
-            currentWaypointIndex++;
-            if (currentWaypointIndex >= waypoints.Length)
-            {
-                currentWaypointIndex -= 2; // Step back to reverse
-                isReversing = true;
-            }
-        }
-        else
-        {
-            currentWaypointIndex--;
-            if (currentWaypointIndex < 0)
-            {
-                currentWaypointIndex = 1; // Step forward to reverse again
-                isReversing = false;
-            }
-        }
+        Vector3 direction = targetPosition - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        fieldOfView.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private IEnumerator WaitAtWaypoint(float duration)
@@ -136,7 +119,6 @@ public class GuardPatrol : MonoBehaviour
         yield return new WaitForSeconds(duration);
         isWaiting = false;
 
-        // Go to the next waypoint or reverse direction
         if (!isReversing)
         {
             currentWaypointIndex++;
@@ -156,4 +138,94 @@ public class GuardPatrol : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator LookAround()
+    {
+        isWaiting = true;
+
+        float totalRotation = 0f;
+        float rotationSpeed = searchSpeed;
+
+        while (totalRotation < 360f)
+        {
+            float rotationStep = rotationSpeed * Time.deltaTime;
+            fieldOfView.Rotate(0, 0, rotationStep);
+            totalRotation += rotationStep;
+            yield return null;
+        }
+
+        fieldOfView.localRotation = Quaternion.identity;
+        isWaiting = false;
+
+        if (!isReversing)
+        {
+            currentWaypointIndex++;
+            if (currentWaypointIndex >= waypoints.Length)
+            {
+                currentWaypointIndex -= 2;
+                isReversing = true;
+            }
+        }
+        else
+        {
+            currentWaypointIndex--;
+            if (currentWaypointIndex < 0)
+            {
+                currentWaypointIndex = 1;
+                isReversing = false;
+            }
+        }
+    }
+
+    private IEnumerator SwitchPatrolSprites()
+    {
+        while (true)
+        {
+            // Only animate patrol sprites when in the Patrolling state
+            if (currentState == GuardState.Patrolling)
+            {
+                spriteRenderer.sprite = sprite1;
+                yield return new WaitForSeconds(0.5f);
+                spriteRenderer.sprite = sprite2;
+                yield return new WaitForSeconds(0.5f);
+            }
+            else
+            {
+                yield return null; 
+            }
+        }
+    }
+
+    private IEnumerator TriggerAlert()
+    {
+        currentState = GuardState.Alert;
+        alertTriggered = true;
+
+        // Temporarily switch to alert sprite
+        spriteRenderer.sprite = alert;
+        yield return new WaitForSeconds(1f);
+
+        // Reset to patrolling state
+        currentState = GuardState.Patrolling;
+        alertTriggered = false;
+    }
+
+    private void UpdateSprite()
+    {
+        switch (currentState)
+        {
+            case GuardState.Patrolling:
+                // No special sprite logic here since patrolling animation handles it
+                break;
+
+            case GuardState.Alert:
+                spriteRenderer.sprite = alert;
+                break;
+
+            case GuardState.Searching:
+                spriteRenderer.sprite = searching;
+                break;
+        }
+    }
+
 }

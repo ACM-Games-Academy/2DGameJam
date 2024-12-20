@@ -4,8 +4,8 @@ using System.Collections;
 [RequireComponent(typeof(MeshFilter))]
 public class Detection : MonoBehaviour
 {
-    [SerializeField] private float viewRange = 5f;      // Distance of the cone
-    [SerializeField] private float fovAngle = 90f;      // Field of view
+    public float viewRange = 5f;      // Distance of the cone
+    public float fovAngle = 90f;      // Field of view
     [SerializeField] private int resolution = 50;       // Number of rays
 
     [SerializeField] private LayerMask obstacleMask;    // Layers to check for blocking
@@ -18,6 +18,7 @@ public class Detection : MonoBehaviour
     public float detectionProgress = 0f;
     private Coroutine detectionCoroutine = null;
     private int detectionCount = 0;
+    public bool IsBeingDetected = false;
     private Combat combat;
 
     public bool IsPlayerDetected = false; // Public flag for detection status
@@ -34,6 +35,7 @@ public class Detection : MonoBehaviour
 
     private void Update()
     {
+        if (detectionProgress == 0) { IsBeingDetected = false;}
 
         UpdateVisionMesh();
         if (detectionCount <= 1)
@@ -158,10 +160,11 @@ public class Detection : MonoBehaviour
             // Check if the player is already detected to avoid further updates
             if (IsPlayerDetected)
             {
+                IsBeingDetected = false;
                 UpdateMeshColor(Color.red);
                 yield break; 
             }
-
+            IsBeingDetected = true;
             detectionProgress += Time.deltaTime;
             float t = detectionProgress / detectionTime;
             Color meshColor = Color.Lerp(Color.yellow, Color.red, t);
