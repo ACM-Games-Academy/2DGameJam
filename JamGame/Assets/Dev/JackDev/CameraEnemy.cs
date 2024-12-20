@@ -12,7 +12,7 @@ public class CameraEnemy : MonoBehaviour
 
     private Combat combat;
 
-    private Coroutine alertCoroutine; // Reference to manage the coroutine
+    private Coroutine alertCoroutine; 
     private int timesAlerted;
 
     public Quaternion alertFixedRotation; // Fixed rotation for the alert
@@ -20,7 +20,7 @@ public class CameraEnemy : MonoBehaviour
     public void Awake()
     {
         alert.SetActive(false);
-        alertFixedRotation = alert.transform.rotation; // Store the initial rotation of the alert
+        alertFixedRotation = alert.transform.rotation; 
         combat = FindObjectOfType<Combat>();
     }
 
