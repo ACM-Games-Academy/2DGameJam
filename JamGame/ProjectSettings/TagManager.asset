@@ -3,16 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LookAround
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obsticle
   - Water
   - UI
-  - 
-  - 
+  - Walls
+  - Floor
   - 
   - 
   - 
@@ -40,4 +41,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 3130611653
     locked: 0

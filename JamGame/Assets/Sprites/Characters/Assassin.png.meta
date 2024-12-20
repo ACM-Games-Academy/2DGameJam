@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,148 +97,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Assassin_0
+      name: Assassin_Idle1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 12
         y: 128
-        width: 64
+        width: 40
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bf86f0f2e6c3be48a355eb2c2c8a8a1
-      internalID: 1695090494
+      spriteID: f951271b8f815c147984e5177cf569d8
+      internalID: 1119040991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assassin_1
+      name: Assassin_Idle2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 76
         y: 128
-        width: 64
+        width: 40
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eee7d2fa30658b64abd4260605b48b3d
-      internalID: -766744065
+      spriteID: 7fadc3e317b9c05488a35a369ca6a29d
+      internalID: -1222079557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assassin_2
+      name: Assassin_Walk1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 140
         y: 128
-        width: 64
+        width: 40
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e0c464ba70bb0d479bfc68199021e46
-      internalID: -1273064526
+      spriteID: 5c5bd0d4c0983954087a4471127a626e
+      internalID: 1881371316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assassin_3
+      name: Assassin_Walk2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 12
         y: 64
-        width: 64
+        width: 40
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c77cc378b5dafb24aa3b249345cb8d86
-      internalID: 1653626841
+      spriteID: 54166e183d9238546b20d39197b75065
+      internalID: 1457934357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assassin_4
+      name: Assassin_Caught1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 136
         y: 64
-        width: 64
+        width: 40
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6888b33c5390d444964b8d7a3224277
-      internalID: -531390563
+      spriteID: 1f22f162033f2d543a0f9b0e4a54dac0
+      internalID: 1219807270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Assassin_5
+      name: Assassin_Caught2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8df011370545e134598003d6265a7837
-      internalID: -1263505253
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Assassin_6
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 4
         y: 0
-        width: 64
+        width: 40
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6824c68cfe946a4a909468db4af0160
-      internalID: 2061903129
+      spriteID: 93fe548c0a87ded44b631bfa0dd82800
+      internalID: -340564511
       vertices: []
       indices: 
       edges: []
@@ -254,13 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Assassin_0: 1695090494
-      Assassin_1: -766744065
-      Assassin_2: -1273064526
-      Assassin_3: 1653626841
-      Assassin_4: -531390563
-      Assassin_5: -1263505253
-      Assassin_6: 2061903129
+      Assassin_Caught1: 1219807270
+      Assassin_Caught2: -340564511
+      Assassin_Idle1: 1119040991
+      Assassin_Idle2: -1222079557
+      Assassin_Walk1: 1881371316
+      Assassin_Walk2: 1457934357
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
