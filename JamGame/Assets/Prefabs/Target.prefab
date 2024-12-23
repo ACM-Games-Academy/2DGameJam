@@ -53,6 +53,7 @@ MonoBehaviour:
   - {fileID: -795612629, guid: 34cb7222e8eb6b64cb29919ce16eb5d8, type: 3}
   - {fileID: -813159526, guid: 34cb7222e8eb6b64cb29919ce16eb5d8, type: 3}
   playerDistanceToKill: 1
+  currentLevel: 1
 --- !u!212 &8072882575523794740
 SpriteRenderer:
   m_ObjectHideFlags: 0
