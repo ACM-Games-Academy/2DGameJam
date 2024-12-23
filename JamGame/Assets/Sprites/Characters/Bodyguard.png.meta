@@ -168,7 +168,7 @@ TextureImporter:
         width: 40
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,15 +181,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bodyguard_0
+      name: '!_1'
       rect:
         serializedVersion: 2
         x: 76
         y: 128
-        width: 40
+        width: 48
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.44347286, y: 0.49999976}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,6 +197,132 @@ TextureImporter:
       bones: []
       spriteID: e1a06c74b374bd54a97b17de6c87b5bc
       internalID: -1457627423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!_2'
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 128
+        width: 48
+        height: 64
+      alignment: 9
+      pivot: {x: 0.4528942, y: 0.49999976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8fd00b91379ff3488537017b13d34c1
+      internalID: 917628296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '!_3'
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 65
+        width: 48
+        height: 63
+      alignment: 9
+      pivot: {x: 0.43405184, y: 0.49999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e033b4f9f97df94479ea9166cbb4a23e
+      internalID: -847521626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Q_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 64
+        width: 49
+        height: 64
+      alignment: 9
+      pivot: {x: 0.44462663, y: 0.49293387}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2223dbef5cea95478799745c716862d
+      internalID: -1326807437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Q_2
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 65
+        width: 48
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c890c53e21921ed40aed146aabe2c3fb
+      internalID: 1877767844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Q_3
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1
+        width: 52
+        height: 64
+      alignment: 9
+      pivot: {x: 0.42173195, y: 0.49999982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9921e24b0a10cd2438b9c436393fa163
+      internalID: 2121072297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Q_4
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 0
+        width: 53
+        height: 64
+      alignment: 9
+      pivot: {x: 0.43300515, y: 0.49999982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586dfb8e37063314ca8b6698b2d11548
+      internalID: 1574013637
       vertices: []
       indices: 
       edges: []
@@ -212,11 +338,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bodyguard_0: -1457627423
+      '!_1': -1457627423
+      '!_2': 917628296
+      '!_3': -847521626
       Bodyguard_Idle1: 950668071
       Bodyguard_Idle2: -364563936
       Bodyguard_Walk1: 871724701
       Bodyguard_Walk2: -1020435953
+      Q_1: -1326807437
+      Q_2: 1877767844
+      Q_3: 2121072297
+      Q_4: 1574013637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
