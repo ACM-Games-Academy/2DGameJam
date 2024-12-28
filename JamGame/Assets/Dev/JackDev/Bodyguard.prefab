@@ -212,7 +212,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 8
-  detectionTime: 1
+  detectionTime: 0.5
   raySamples: 10
   detectionThreshold: 0.01
   detectionProgress: 0
