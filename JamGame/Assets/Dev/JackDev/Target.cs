@@ -75,8 +75,15 @@ public class Target : MonoBehaviour
         // Delay to allow the animation to play
         yield return new WaitForSeconds(1f);
 
-        MarkAsComplete();
 
+
+
+
+
+
+
+
+        MarkAsComplete();
     }
 
     public void MarkAsComplete()

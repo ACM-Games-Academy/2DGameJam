@@ -57,7 +57,6 @@ public class Timer : MonoBehaviour
 
     private void EndGame()
     {
-        Debug.Log("Game Over");
-        // Add end game logic here
+       
     }
 }
