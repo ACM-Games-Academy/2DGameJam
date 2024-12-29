@@ -3122,6 +3122,10 @@ PrefabInstance:
       propertyPath: nextScene
       value: 
       objectReference: {fileID: 102900000, guid: a3d57f1fd81a47444ba8c6e8ee4856ff, type: 3}
+    - target: {fileID: 7039749486333023004, guid: f94f48a425725c746b813c1afaf30ce2, type: 3}
+      propertyPath: nextSceneName
+      value: MainMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

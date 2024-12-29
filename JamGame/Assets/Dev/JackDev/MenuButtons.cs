@@ -130,7 +130,7 @@ public class MenuButtons : MonoBehaviour
     public void LoadLevel1()
     {
         Debug.Log("1");
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("level1");
 
         saveData.SaveProgress();
         saveData.LoadProgress();
@@ -140,7 +140,7 @@ public class MenuButtons : MonoBehaviour
     public void LoadLevel2()
     {
         Debug.Log("2");
-        saveData.level2Complete = true;
+        SceneManager.LoadScene("level2");
 
         saveData.SaveProgress();
         saveData.LoadProgress();
@@ -149,7 +149,7 @@ public class MenuButtons : MonoBehaviour
     public void LoadLevel3()
     {
         Debug.Log("3");
-        saveData.level3Complete = true;
+        SceneManager.LoadScene("level3");
 
         saveData.SaveProgress();
         saveData.LoadProgress();
@@ -158,7 +158,7 @@ public class MenuButtons : MonoBehaviour
     public void LoadLevel4()
     {
         Debug.Log("4");
-        saveData.level4Complete = true;
+        SceneManager.LoadScene("level4");
 
         saveData.SaveProgress();
         saveData.LoadProgress();
@@ -167,7 +167,7 @@ public class MenuButtons : MonoBehaviour
     public void LoadLevel5()
     {
         Debug.Log("5");
-        saveData.level5Complete = true;
+        SceneManager.LoadScene("level5");
 
         saveData.SaveProgress();
         saveData.LoadProgress();
@@ -176,8 +176,7 @@ public class MenuButtons : MonoBehaviour
     public void LoadLevel6()
     {
         Debug.Log("6");
-        saveData.level6Complete = true;
-
+        SceneManager.LoadScene("level6");
         saveData.SaveProgress();
         saveData.LoadProgress();
         UpdateLockedLevels();
@@ -185,7 +184,7 @@ public class MenuButtons : MonoBehaviour
     public void LoadLevel7()
     {
         Debug.Log("7");
-        saveData.level7Complete = true;
+        SceneManager.LoadScene("level7");
 
         saveData.SaveProgress();
         saveData.LoadProgress();
@@ -194,7 +193,7 @@ public class MenuButtons : MonoBehaviour
     public void LoadLevel8()
     {
         Debug.Log("8");
-        saveData.level8Complete = true;
+        SceneManager.LoadScene("level8");
 
         saveData.SaveProgress();
         saveData.LoadProgress();
