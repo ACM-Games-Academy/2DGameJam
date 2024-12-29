@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4141633660575157546}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.124, y: 0.069, z: 0}
+  m_LocalPosition: {x: 2.2, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901387717907e5e4cb1007bf1939b2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRange: 1.5
+  viewRange: 1
   fovAngle: 360
   resolution: 200
   obstacleMask:
@@ -106,6 +106,7 @@ MonoBehaviour:
   raySamples: 10
   detectionThreshold: 0.01
   detectionProgress: 0
+  IsBeingDetected: 0
   IsPlayerDetected: 0
 --- !u!1 &6803600639512787356
 GameObject:
@@ -135,7 +136,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.12475308, w: 0.9921878}
   m_LocalPosition: {x: -5.1561546, y: -1.8426762, z: 0}
-  m_LocalScale: {x: 2.7589, y: 2.7589, z: 2.7589}
+  m_LocalScale: {x: 1, y: 1, z: 2.7589}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3975675246568683965}
@@ -206,9 +207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6025a8f94cf1b68469c45514566b6f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.25
-  minAngle: 100
-  maxAngle: 12
+  speed: 0.5
+  minAngle: 150
+  maxAngle: 20
   alertAppearTime: 2
   alert: {fileID: 6875878512530582923}
   alertFixedRotation: {x: 0, y: 0, z: 0, w: 0}

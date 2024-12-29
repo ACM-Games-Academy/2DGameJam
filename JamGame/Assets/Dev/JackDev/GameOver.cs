@@ -21,7 +21,7 @@ public class GameOver : MonoBehaviour
     // End UI
     public GameObject endScreen;
     public GameObject winScreen;
-
+    [SerializeField] Object nextScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -130,5 +130,6 @@ public class GameOver : MonoBehaviour
     public void NextLevel()
     {
         // Logic for the next level
+        SceneManager.LoadScene(nextScene.name);
     }
 }

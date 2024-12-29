@@ -75,17 +75,17 @@ public class GuardPatrol : MonoBehaviour
             switch (currentState)
             {
                 case GuardState.Patrolling:
-                    // Do not stop the current audio to allow it to finish
-                    searchingSoundPlayed = false; // Reset so it can play again if needed
+                    
+                    searchingSoundPlayed = false; 
                     break;
 
                 case GuardState.Alert:
-                    // Do not stop the current audio to allow it to finish
-                    searchingSoundPlayed = false; // Reset so it can play again if needed
+                    
+                    searchingSoundPlayed = false; 
                     break;
 
                 case GuardState.Searching:
-                    if (!searchingSoundPlayed) // Only play if it hasn't already been triggered
+                    if (!searchingSoundPlayed) 
                     {
                         Audio.PlaySearchingSound();
                         searchingSoundPlayed = true;
@@ -249,7 +249,7 @@ public class GuardPatrol : MonoBehaviour
         switch (currentState)
         {
             case GuardState.Patrolling:
-                // No special sprite logic here since patrolling animation handles it
+                
                 break;
 
             case GuardState.Alert:

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static GuardPatrol;
 
 public class CameraEnemy : MonoBehaviour
 {
@@ -9,9 +10,10 @@ public class CameraEnemy : MonoBehaviour
 
     public float alertAppearTime = 1f; // Time the alert appears
     public GameObject alert;
+    public Audio Audio;
 
     private Combat combat;
-
+    private Detection detection;
     private Coroutine alertCoroutine; 
     private int timesAlerted;
 
@@ -22,6 +24,7 @@ public class CameraEnemy : MonoBehaviour
         alert.SetActive(false);
         alertFixedRotation = alert.transform.rotation; 
         combat = FindObjectOfType<Combat>();
+        detection = GetComponentInChildren<Detection>();
     }
 
     // Update is called once per frame
@@ -42,6 +45,11 @@ public class CameraEnemy : MonoBehaviour
             {
                 alertCoroutine = StartCoroutine(Alert());
             }
+        }
+
+        if (detection != null && detection.IsBeingDetected)
+        {
+            Audio.PlayCameraSearchingSound();
         }
     }
 

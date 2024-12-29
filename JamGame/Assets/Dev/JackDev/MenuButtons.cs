@@ -130,7 +130,7 @@ public class MenuButtons : MonoBehaviour
     public void LoadLevel1()
     {
         Debug.Log("1");
-        saveData.level1Complete = true;
+        SceneManager.LoadScene("Level1");
 
         saveData.SaveProgress();
         saveData.LoadProgress();

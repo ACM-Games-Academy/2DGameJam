@@ -6,6 +6,7 @@ public class TerminalScript : MonoBehaviour
 {
     public GameObject[] Door;
     public GameObject[] Bodyguards;
+    public Audio Audio;
     // Start is called before the first frame update
     /// <summary>
     /// Sent when an incoming collider makes contact with this object's
@@ -17,6 +18,8 @@ public class TerminalScript : MonoBehaviour
     if (other.gameObject.CompareTag("Player")){
         if(Door.Length > 0){
             foreach (GameObject DOOR in Door){
+
+                    Audio.PlayButtonPressSound();
                 Destroy(DOOR);
             }
         }
