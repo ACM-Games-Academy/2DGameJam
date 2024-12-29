@@ -15,6 +15,7 @@ public class GuardPatrol : MonoBehaviour
     public Sprite sprite2;
     public Sprite searching;
     public Sprite alert;
+    public Audio Audio;
 
     private int currentWaypointIndex = 0;
     private bool isReversing = false;
@@ -23,6 +24,9 @@ public class GuardPatrol : MonoBehaviour
     private Vector3 lastPosition;          // To track movement direction
     private Combat combat;
     private bool alertTriggered = false;
+
+    private GuardState lastState = GuardState.Patrolling; // To track state changes
+    private bool searchingSoundPlayed = false; // Prevents re-triggering the sound while it's already playing
 
     private void Awake()
     {
@@ -37,7 +41,6 @@ public class GuardPatrol : MonoBehaviour
         // Start sprite animation for patrolling
         StartCoroutine(SwitchPatrolSprites());
     }
-
 
     private void Update()
     {
@@ -58,10 +61,41 @@ public class GuardPatrol : MonoBehaviour
         // Perform patrol actions
         Patrol();
 
-        // Update the sprite based on the current state
-        UpdateSprite();
+        // Update the sprite and handle audio based on the current state
+        UpdateState();
     }
 
+    private void UpdateState()
+    {
+        // Check if the state has changed
+        if (currentState != lastState)
+        {
+            lastState = currentState;
+
+            switch (currentState)
+            {
+                case GuardState.Patrolling:
+                    // Do not stop the current audio to allow it to finish
+                    searchingSoundPlayed = false; // Reset so it can play again if needed
+                    break;
+
+                case GuardState.Alert:
+                    // Do not stop the current audio to allow it to finish
+                    searchingSoundPlayed = false; // Reset so it can play again if needed
+                    break;
+
+                case GuardState.Searching:
+                    if (!searchingSoundPlayed) // Only play if it hasn't already been triggered
+                    {
+                        Audio.PlaySearchingSound();
+                        searchingSoundPlayed = true;
+                    }
+                    break;
+            }
+
+            UpdateSprite();
+        }
+    }
 
     private void Patrol()
     {
@@ -191,7 +225,7 @@ public class GuardPatrol : MonoBehaviour
             }
             else
             {
-                yield return null; 
+                yield return null;
             }
         }
     }
@@ -227,5 +261,4 @@ public class GuardPatrol : MonoBehaviour
                 break;
         }
     }
-
 }

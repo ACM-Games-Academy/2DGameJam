@@ -102,7 +102,6 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   speed: 2
   searchSpeed: 50
   fieldOfView: {fileID: 2601920699366129747}
@@ -110,6 +109,7 @@ MonoBehaviour:
   sprite2: {fileID: 21300000, guid: 824e068d52957904da297881d74d2126, type: 3}
   searching: {fileID: 21300000, guid: 96401a03680097e4698ff0505ec3dcba, type: 3}
   alert: {fileID: 21300000, guid: 6ad1aa89f0555974ca1f87515f02604b, type: 3}
+  Audio: {fileID: 0}
 --- !u!1 &6765756111962338599
 GameObject:
   m_ObjectHideFlags: 0
