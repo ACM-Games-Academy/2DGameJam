@@ -22,6 +22,7 @@ public class Target : MonoBehaviour
     private bool isPlayerInRange = false; // Tracks if player is in range
     public int currentLevel;               // Current level index
     public SaveData saveData;
+    public GameOver gameOver;
 
     void Start()
     {
@@ -75,13 +76,7 @@ public class Target : MonoBehaviour
         // Delay to allow the animation to play
         yield return new WaitForSeconds(1f);
 
-
-
-
-
-
-
-
+        gameOver.hasWon = true;
 
         MarkAsComplete();
     }
