@@ -9,10 +9,15 @@ public class PlayerCont : MonoBehaviour
     private float verticalInput;
     public float walkSpeed;
     private Vector2 walkVect;
+    private SpriteRenderer spriteRenderer;
+    private Vector3 lastPosition; 
+
     // Start is called before the first frame update
     void Start()
     {
         myRb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        lastPosition = transform.position; 
     }
 
     // Update is called once per frame
@@ -27,8 +32,23 @@ public class PlayerCont : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        walkVect = new Vector2 (horizontalInput, verticalInput);
+        // Move the player
+        walkVect = new Vector2(horizontalInput, verticalInput);
         walkVect.Normalize();
         myRb.velocity = walkVect * walkSpeed;
+
+
+        Vector3 currentPosition = transform.position;
+        Vector3 direction = currentPosition - lastPosition;
+
+        if (direction.x < 0)
+        {
+            spriteRenderer.flipX = true; // Moving left
+        }
+        else if (direction.x > 0)
+        {
+            spriteRenderer.flipX = false; // Moving right
+        }
+        lastPosition = currentPosition;
     }
 }
